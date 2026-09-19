@@ -94,11 +94,19 @@ The project will include:
 | Day | Work |
 |-----|------|
 | Day 1 | Project repository and README created |
-| Day 2 | Project setup |
+| Day 2 | Project setup and basic data analysis |
 | Day 3 | Dataset exploration |
 | ... | ... |
 | Day 45 | Final project and documentation |
 
+## Day 2 Progress
+- Downloaded the Student Performance dataset from UCI.
+- Organized the dataset into the data folder.
+- Loaded Mathematics and Portuguese datasets using Python.
+- Checked dataset shape and missing values.
+- Performed basic statistical analysis.
+- Calculated average final grades.
+- Counted students with passing grades.
 ## Author
 
 **Tanisha Gautam**
