@@ -37,3 +37,30 @@ print("Average Final Grade - Portuguese:", portuguese_data["G3"].mean())
 print("\nStudents with G3 >= 10")
 print("Mathematics:", (math_data["G3"] >= 10).sum())
 print("Portuguese:", (portuguese_data["G3"] >= 10).sum())
+# Day 3 - Data Visualization
+
+import matplotlib.pyplot as plt
+
+# 1. Distribution of final grades
+plt.figure(figsize=(8, 5))
+plt.hist(math_data["G3"], bins=10)
+plt.xlabel("Final Grade (G3)")
+plt.ylabel("Number of Students")
+plt.title("Distribution of Final Grades - Mathematics")
+plt.show()
+
+# 2. Study time vs final grade
+plt.figure(figsize=(8, 5))
+plt.scatter(math_data["studytime"], math_data["G3"])
+plt.xlabel("Study Time")
+plt.ylabel("Final Grade (G3)")
+plt.title("Study Time vs Final Grade")
+plt.show()
+
+# 3. Failures vs final grade
+plt.figure(figsize=(8, 5))
+plt.scatter(math_data["failures"], math_data["G3"])
+plt.xlabel("Number of Failures")
+plt.ylabel("Final Grade (G3)")
+plt.title("Failures vs Final Grade")
+plt.show()
