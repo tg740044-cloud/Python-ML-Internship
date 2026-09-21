@@ -64,3 +64,25 @@ plt.xlabel("Number of Failures")
 plt.ylabel("Final Grade (G3)")
 plt.title("Failures vs Final Grade")
 plt.show()
+
+# Day 4 - Feature Analysis
+
+print("\nDay 4 - Feature Analysis")
+
+# Average grade by study time
+studytime_analysis = math_data.groupby("studytime")["G3"].mean()
+
+print("\nAverage Final Grade by Study Time:")
+print(studytime_analysis)
+
+# Average grade by number of failures
+failure_analysis = math_data.groupby("failures")["G3"].mean()
+
+print("\nAverage Final Grade by Number of Failures:")
+print(failure_analysis)
+
+# Average grade by school
+school_analysis = math_data.groupby("school")["G3"].mean()
+
+print("\nAverage Final Grade by School:")
+print(school_analysis)
