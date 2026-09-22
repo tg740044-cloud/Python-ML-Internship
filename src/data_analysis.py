@@ -86,3 +86,34 @@ school_analysis = math_data.groupby("school")["G3"].mean()
 
 print("\nAverage Final Grade by School:")
 print(school_analysis)
+# Day 5 - Feature Selection
+
+print("\nDay 5 - Feature Selection")
+
+# Select important features for prediction
+features = [
+    "studytime",
+    "failures",
+    "absences",
+    "Medu",
+    "Fedu",
+    "G1",
+    "G2"
+]
+
+target = "G3"
+
+X = math_data[features]
+y = math_data[target]
+
+print("\nSelected Features:")
+print(features)
+
+print("\nFeature Data:")
+print(X.head())
+
+print("\nTarget Data:")
+print(y.head())
+
+print("\nFeature Shape:", X.shape)
+print("Target Shape:", y.shape)
