@@ -117,3 +117,27 @@ print(y.head())
 
 print("\nFeature Shape:", X.shape)
 print("Target Shape:", y.shape)
+
+
+# Day 6 - Train Test Split
+
+from sklearn.model_selection import train_test_split
+
+print("\nDay 6 - Train Test Split")
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+print("\nTraining Data Shape:")
+print(X_train.shape)
+
+print("\nTesting Data Shape:")
+print(X_test.shape)
+
+print("\nTraining Target Shape:")
+print(y_train.shape)
+
+print("\nTesting Target Shape:")
+print(y_test.shape)
