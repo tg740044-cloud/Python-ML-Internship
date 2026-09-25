@@ -141,3 +141,25 @@ print(y_train.shape)
 
 print("\nTesting Target Shape:")
 print(y_test.shape)
+# Day 7 - Linear Regression Model
+
+from sklearn.linear_model import LinearRegression
+
+print("\nDay 7 - Linear Regression Model")
+
+# Create the model
+model = LinearRegression()
+
+# Train the model
+model.fit(X_train, y_train)
+
+print("Model training completed successfully!")
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+print("\nActual Grades:")
+print(y_test.head())
+
+print("\nPredicted Grades:")
+print(y_pred[:5])
