@@ -163,3 +163,18 @@ print(y_test.head())
 
 print("\nPredicted Grades:")
 print(y_pred[:5])
+
+# Day 8 - Model Evaluation
+
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+print("\nDay 8 - Model Evaluation")
+
+# Calculate evaluation metrics
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print("\nMean Absolute Error (MAE):", mae)
+print("Mean Squared Error (MSE):", mse)
+print("R2 Score:", r2)
