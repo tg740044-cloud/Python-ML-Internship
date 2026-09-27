@@ -178,3 +178,21 @@ r2 = r2_score(y_test, y_pred)
 print("\nMean Absolute Error (MAE):", mae)
 print("Mean Squared Error (MSE):", mse)
 print("R2 Score:", r2)
+
+# Day 9 - Actual vs Predicted Grades
+
+plt.figure(figsize=(8, 5))
+
+plt.scatter(y_test, y_pred)
+
+# Perfect prediction line
+plt.plot(
+    [y_test.min(), y_test.max()],
+    [y_test.min(), y_test.max()]
+)
+
+plt.xlabel("Actual Final Grade")
+plt.ylabel("Predicted Final Grade")
+plt.title("Actual vs Predicted Student Grades")
+
+plt.show()
