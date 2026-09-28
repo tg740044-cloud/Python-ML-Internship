@@ -196,3 +196,28 @@ plt.ylabel("Predicted Final Grade")
 plt.title("Actual vs Predicted Student Grades")
 
 plt.show()
+# Day 10 - Random Forest Regression
+
+from sklearn.ensemble import RandomForestRegressor
+
+print("\nDay 10 - Random Forest Regression")
+
+# Create the Random Forest model
+rf_model = RandomForestRegressor(
+    n_estimators=100,
+    random_state=42
+)
+
+# Train the model
+rf_model.fit(X_train, y_train)
+
+print("Random Forest model training completed!")
+
+# Make predictions
+rf_pred = rf_model.predict(X_test)
+
+print("\nActual Grades:")
+print(y_test.head())
+
+print("\nRandom Forest Predictions:")
+print(rf_pred[:5])
