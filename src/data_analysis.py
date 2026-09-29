@@ -221,3 +221,28 @@ print(y_test.head())
 
 print("\nRandom Forest Predictions:")
 print(rf_pred[:5])
+# Day 11 - Model Comparison
+
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+print("\nDay 11 - Model Comparison")
+
+# Linear Regression metrics
+linear_mae = mean_absolute_error(y_test, y_pred)
+linear_mse = mean_squared_error(y_test, y_pred)
+linear_r2 = r2_score(y_test, y_pred)
+
+# Random Forest metrics
+rf_mae = mean_absolute_error(y_test, rf_pred)
+rf_mse = mean_squared_error(y_test, rf_pred)
+rf_r2 = r2_score(y_test, rf_pred)
+
+print("\nLinear Regression:")
+print("MAE:", linear_mae)
+print("MSE:", linear_mse)
+print("R2 Score:", linear_r2)
+
+print("\nRandom Forest:")
+print("MAE:", rf_mae)
+print("MSE:", rf_mse)
+print("R2 Score:", rf_r2)
