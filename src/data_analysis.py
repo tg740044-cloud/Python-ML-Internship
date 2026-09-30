@@ -246,3 +246,26 @@ print("\nRandom Forest:")
 print("MAE:", rf_mae)
 print("MSE:", rf_mse)
 print("R2 Score:", rf_r2)
+
+# Day 12 - Model Comparison Visualization
+
+models = ["Linear Regression", "Random Forest"]
+
+mae_values = [linear_mae, rf_mae]
+r2_values = [linear_r2, rf_r2]
+
+# MAE comparison
+plt.figure(figsize=(8, 5))
+plt.bar(models, mae_values)
+plt.xlabel("Model")
+plt.ylabel("Mean Absolute Error")
+plt.title("MAE Comparison of Models")
+plt.show()
+
+# R2 comparison
+plt.figure(figsize=(8, 5))
+plt.bar(models, r2_values)
+plt.xlabel("Model")
+plt.ylabel("R2 Score")
+plt.title("R2 Score Comparison of Models")
+plt.show()
