@@ -269,3 +269,35 @@ plt.xlabel("Model")
 plt.ylabel("R2 Score")
 plt.title("R2 Score Comparison of Models")
 plt.show()
+
+# Day 13 - Student Grade Prediction
+
+print("\nDay 13 - Student Grade Prediction")
+
+def predict_grade():
+    print("\nEnter student details:")
+
+    studytime = float(input("Study time (1-4): "))
+    failures = float(input("Number of past failures: "))
+    absences = float(input("Number of absences: "))
+    Medu = float(input("Mother's education level (0-4): "))
+    Fedu = float(input("Father's education level (0-4): "))
+    G1 = float(input("First period grade (0-20): "))
+    G2 = float(input("Second period grade (0-20): "))
+
+    student_data = [[
+        studytime,
+        failures,
+        absences,
+        Medu,
+        Fedu,
+        G1,
+        G2
+    ]]
+
+    prediction = model.predict(student_data)
+
+    print("\nPredicted Final Grade (G3):", round(prediction[0], 2))
+
+
+predict_grade()
