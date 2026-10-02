@@ -301,3 +301,51 @@ def predict_grade():
 
 
 predict_grade()
+
+
+# Day 14 - Input Validation
+
+print("\nDay 14 - Input Validation")
+
+
+def get_valid_input(prompt, minimum, maximum):
+    while True:
+        try:
+            value = float(input(prompt))
+
+            if minimum <= value <= maximum:
+                return value
+
+            print(f"Please enter a value between {minimum} and {maximum}.")
+
+        except ValueError:
+            print("Please enter a valid number.")
+
+
+def predict_grade_validated():
+    print("\nEnter student details:")
+
+    studytime = get_valid_input("Study time (1-4): ", 1, 4)
+    failures = get_valid_input("Number of past failures (0-4): ", 0, 4)
+    absences = get_valid_input("Number of absences (0-93): ", 0, 93)
+    Medu = get_valid_input("Mother's education level (0-4): ", 0, 4)
+    Fedu = get_valid_input("Father's education level (0-4): ", 0, 4)
+    G1 = get_valid_input("First period grade (0-20): ", 0, 20)
+    G2 = get_valid_input("Second period grade (0-20): ", 0, 20)
+
+    student_data = [[
+        studytime,
+        failures,
+        absences,
+        Medu,
+        Fedu,
+        G1,
+        G2
+    ]]
+
+    prediction = model.predict(student_data)
+
+    print("\nPredicted Final Grade (G3):", round(prediction[0], 2))
+
+
+predict_grade_validated()
