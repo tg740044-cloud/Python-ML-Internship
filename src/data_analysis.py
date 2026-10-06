@@ -349,3 +349,48 @@ def predict_grade_validated():
 
 
 predict_grade_validated()
+
+# Day 15 - Grade Interpretation
+
+print("\nDay 15 - Grade Interpretation")
+
+
+def interpret_grade(grade):
+    if grade < 10:
+        return "Needs Improvement"
+    elif grade < 13:
+        return "Average"
+    elif grade < 16:
+        return "Good"
+    else:
+        return "Excellent"
+
+
+def final_prediction():
+    print("\nStudent Performance Prediction")
+
+    studytime = get_valid_input("Study time (1-4): ", 1, 4)
+    failures = get_valid_input("Number of past failures (0-4): ", 0, 4)
+    absences = get_valid_input("Number of absences (0-93): ", 0, 93)
+    Medu = get_valid_input("Mother's education level (0-4): ", 0, 4)
+    Fedu = get_valid_input("Father's education level (0-4): ", 0, 4)
+    G1 = get_valid_input("First period grade (0-20): ", 0, 20)
+    G2 = get_valid_input("Second period grade (0-20): ", 0, 20)
+
+    student_data = [[
+        studytime,
+        failures,
+        absences,
+        Medu,
+        Fedu,
+        G1,
+        G2
+    ]]
+
+    prediction = model.predict(student_data)[0]
+
+    print("\nPredicted Final Grade (G3):", round(prediction, 2))
+    print("Performance Level:", interpret_grade(prediction))
+
+
+final_prediction()
