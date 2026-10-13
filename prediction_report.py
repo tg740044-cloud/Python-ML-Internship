@@ -1,4 +1,4 @@
-# Day 20 - Prediction History Report
+# Day 21 - Formatted Prediction History
 
 import csv
 import os
@@ -6,34 +6,32 @@ import os
 file_path = "results/predictions.csv"
 
 if not os.path.exists(file_path):
-    print("No prediction history found. Run predict_student.py first.")
-
+    print("No prediction history found.")
+    print("Run predict_student.py first.")
 else:
     with open(file_path, "r", newline="") as file:
-        reader = csv.DictReader(file)
-        records = list(reader)
+        records = list(csv.DictReader(file))
 
     if not records:
-        print("No predictions recorded yet.")
-
+        print("No predictions available yet.")
     else:
+        print("\nSTUDENT PERFORMANCE PREDICTION HISTORY")
+        print("=" * 75)
+        print(f"{'Date':<20} {'Grade':>10} {'Level':<20}")
+        print("-" * 75)
+
+        for record in records:
+            print(
+                f"{record['Date']:<20} "
+                f"{float(record['PredictedGrade']):>10.2f} "
+                f"{record['PerformanceLevel']:<20}"
+            )
+
         grades = [
             float(record["PredictedGrade"])
             for record in records
         ]
 
-        print("\nStudent Prediction History")
-        print("--------------------------")
-        print("Total predictions:", len(records))
+        print("-" * 75)
+        print("Total predictions:", len(grades))
         print("Average predicted grade:", round(sum(grades) / len(grades), 2))
-        print("Highest predicted grade:", round(max(grades), 2))
-        print("Lowest predicted grade:", round(min(grades), 2))
-
-        print("\nPrevious Predictions:")
-
-        for record in records:
-            print(
-                record["Date"],
-                "| Grade:", record["PredictedGrade"],
-                "| Level:", record["PerformanceLevel"]
-            )
