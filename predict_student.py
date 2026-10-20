@@ -230,12 +230,39 @@ def predict_student():
 
     print("Prediction saved successfully.")
 
+    # Day 32 - Compare Actual and Predicted Grades
+
+def compare_grades():
+    actual_grades = y_test.tolist()
+    predicted_grades = rf_model.predict(X_test)
+
+    comparison = pd.DataFrame({
+        "Actual Grade": actual_grades,
+        "Predicted Grade": predicted_grades.round(2)
+    })
+
+    comparison["Difference"] = (
+        comparison["Actual Grade"] -
+        comparison["Predicted Grade"]
+    ).round(2)
+
+    print("\nACTUAL VS PREDICTED GRADES")
+    print(comparison.head(10).to_string(index=False))
+
+    comparison.to_csv(
+        "results/grade_comparison.csv",
+        index=False
+    )
+
+    print("\nComparison saved to results/grade_comparison.csv")
+
 # Main menu
 while True:
     print("\n" + "=" * 40)
     print("1. Predict Student Grade")
     print("2. View Prediction History")
     print("3. Exit")
+    print("4. Compare Actual and Predicted Grades")
 
     choice = input("Choose an option: ")
 
@@ -246,5 +273,8 @@ while True:
     elif choice == "3":
         print("Thank you for using the program!")
         break
+    elif choice == "4":
+      compare_grades()
+    
     else:
-        print("Invalid choice. Select 1, 2, or 3.")
+        print("Invalid choice. Select 1, 2,3 or 4.")
