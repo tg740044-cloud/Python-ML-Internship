@@ -255,6 +255,78 @@ def compare_grades():
     )
 
     print("\nComparison saved to results/grade_comparison.csv")
+    # DAY 33 - PASS AND FAIL ANALYSIS
+
+def pass_fail_analysis():
+    passed = len(data[data["G3"] >= 10])
+    failed = len(data[data["G3"] < 10])
+
+    print("\nPASS AND FAIL ANALYSIS")
+    print("----------------------")
+    print("Total Students:", len(data))
+    print("Passed Students:", passed)
+    print("Failed Students:", failed)
+
+    plt.figure(figsize=(6, 5))
+    plt.bar(["Passed", "Failed"], [passed, failed])
+    plt.title("Student Pass and Fail Analysis")
+    plt.ylabel("Number of Students")
+    plt.savefig("results/pass_fail_analysis.png")
+    plt.close()
+
+    print("Graph saved successfully.")
+
+
+# DAY 34 - ATTENDANCE ANALYSIS
+
+def attendance_analysis():
+    average = data["absences"].mean()
+    highest = data["absences"].max()
+    lowest = data["absences"].min()
+
+    print("\nATTENDANCE ANALYSIS")
+    print("-------------------")
+    print("Average Absences:", round(average, 2))
+    print("Highest Absences:", highest)
+    print("Lowest Absences:", lowest)
+
+    plt.figure(figsize=(8, 5))
+    plt.hist(data["absences"], bins=15, edgecolor="black")
+    plt.title("Student Absence Distribution")
+    plt.xlabel("Number of Absences")
+    plt.ylabel("Number of Students")
+    plt.savefig("results/attendance_analysis.png")
+    plt.close()
+
+    print("Attendance graph saved successfully.")
+
+
+# DAY 35 - STUDY TIME VS FINAL GRADE
+
+def study_time_analysis():
+    average_grades = data.groupby("studytime")["G3"].mean()
+
+    print("\nSTUDY TIME ANALYSIS")
+    print("-------------------")
+    print(average_grades.round(2))
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(
+        average_grades.index,
+        average_grades.values,
+        marker="o"
+    )
+
+    plt.title("Study Time vs Final Grade")
+    plt.xlabel("Study Time")
+    plt.ylabel("Average Final Grade")
+    plt.xticks([1, 2, 3, 4])
+    plt.grid(True)
+
+    plt.savefig("results/study_time_analysis.png")
+    plt.close()
+
+    print("Study time graph saved successfully.")
 
 # Main menu
 while True:
@@ -263,6 +335,9 @@ while True:
     print("2. View Prediction History")
     print("3. Exit")
     print("4. Compare Actual and Predicted Grades")
+    print("5. Pass and Fail Analysis")
+    print("6. Attendance Analysis")
+    print("7. Study Time Analysis")
 
     choice = input("Choose an option: ")
 
@@ -275,6 +350,14 @@ while True:
         break
     elif choice == "4":
       compare_grades()
+    elif choice == "5":
+            pass_fail_analysis()
+
+    elif choice == "6":
+            attendance_analysis()
+
+    elif choice == "7":
+            study_time_analysis()
     
     else:
-        print("Invalid choice. Select 1, 2,3 or 4.")
+        print("Invalid choice. Select from 1 to 7.")
