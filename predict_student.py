@@ -400,6 +400,114 @@ def correlation_analysis():
     plt.close()
 
     print("Correlation graph saved successfully.")
+    # DAY 39 - GENDER-WISE PERFORMANCE ANALYSIS
+
+def gender_analysis():
+    average_grades = data.groupby("sex")["G3"].mean()
+
+    print("\nGENDER-WISE PERFORMANCE")
+    print("-----------------------")
+    print("Average Final Grade:")
+    print(average_grades.round(2))
+
+    plt.figure(figsize=(7, 5))
+    plt.bar(average_grades.index, average_grades.values)
+
+    plt.title("Gender-wise Student Performance")
+    plt.xlabel("Gender")
+    plt.ylabel("Average Final Grade")
+
+    plt.savefig("results/gender_analysis.png")
+    plt.close()
+
+    print("Gender analysis graph saved.")
+
+
+# DAY 40 - GRADE CATEGORY ANALYSIS
+
+def grade_category_analysis():
+    def categorize_grade(grade):
+        if grade < 10:
+            return "Fail"
+        elif grade < 13:
+            return "Average"
+        elif grade < 16:
+            return "Good"
+        else:
+            return "Excellent"
+
+    categories = data["G3"].apply(categorize_grade)
+    counts = categories.value_counts()
+
+    print("\nGRADE CATEGORY ANALYSIS")
+    print("-----------------------")
+    print(counts)
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(counts.index, counts.values)
+
+    plt.title("Student Grade Categories")
+    plt.xlabel("Performance Category")
+    plt.ylabel("Number of Students")
+
+    plt.savefig("results/grade_categories.png")
+    plt.close()
+
+    print("Grade category graph saved.")
+
+
+# DAY 41 - AUTOMATIC PROJECT SUMMARY REPORT
+
+def generate_project_report():
+    total_students = len(data)
+    average_grade = data["G3"].mean()
+    highest_grade = data["G3"].max()
+    lowest_grade = data["G3"].min()
+
+    passed = len(data[data["G3"] >= 10])
+    failed = len(data[data["G3"] < 10])
+
+    report = f"""
+STUDENT PERFORMANCE PREDICTION
+PROJECT SUMMARY REPORT
+====================================
+
+1. DATASET INFORMATION
+
+Total Students: {total_students}
+
+2. GRADE STATISTICS
+
+Average Final Grade: {average_grade:.2f}
+Highest Final Grade: {highest_grade}
+Lowest Final Grade: {lowest_grade}
+
+3. PASS AND FAIL ANALYSIS
+
+Passed Students: {passed}
+Failed Students: {failed}
+
+4. STUDY INFORMATION
+
+Average Study Time: {data['studytime'].mean():.2f}
+Average Absences: {data['absences'].mean():.2f}
+
+5. MODEL INFORMATION
+
+Model Used: Random Forest Regressor
+Target Variable: G3
+Features Used: {', '.join(features)}
+
+====================================
+END OF REPORT
+"""
+
+    with open("results/project_summary_report.txt", "w") as file:
+        file.write(report)
+
+    print("\nPROJECT SUMMARY REPORT")
+    print(report)
+    print("Report saved successfully.")
 
 # Main menu
 while True:
@@ -414,6 +522,9 @@ while True:
     print("8. Parental Education Analysis")
     print("9. Past Failures Analysis")
     print("10. Correlation Analysis")
+    print("11. Gender-wise Performance Analysis")
+    print("12. Grade Category Analysis")
+    print("13. Generate Project Summary Report")
 
     choice = input("Choose an option: ")
 
@@ -441,5 +552,12 @@ while True:
 
     elif choice == "10":
             correlation_analysis()
+    elif choice == "11":
+            gender_analysis()
+    elif choice == "12":
+            grade_category_analysis()
+
+    elif choice == "13":
+            generate_project_report()
     else:
-        print("Invalid choice. Select from 1 to 10.")
+        print("Invalid choice. Select from 1 to 13.")
