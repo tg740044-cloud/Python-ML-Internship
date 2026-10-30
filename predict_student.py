@@ -327,6 +327,79 @@ def study_time_analysis():
     plt.close()
 
     print("Study time graph saved successfully.")
+    # DAY 36 - PARENTAL EDUCATION ANALYSIS
+
+def parental_education_analysis():
+    average_grades = data.groupby("Medu")["G3"].mean()
+
+    print("\nPARENTAL EDUCATION ANALYSIS")
+    print("---------------------------")
+    print("Mother's Education vs Average Student Grade")
+    print(average_grades.round(2))
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(average_grades.index, average_grades.values)
+
+    plt.title("Mother's Education vs Student Performance")
+    plt.xlabel("Mother's Education Level")
+    plt.ylabel("Average Final Grade")
+    plt.savefig("results/parental_education.png")
+    plt.close()
+
+    print("Graph saved successfully.")
+
+
+# DAY 37 - PAST FAILURES ANALYSIS
+
+def failure_analysis():
+    average_grades = data.groupby("failures")["G3"].mean()
+
+    print("\nPAST FAILURES ANALYSIS")
+    print("----------------------")
+    print("Past Failures vs Average Final Grade")
+    print(average_grades.round(2))
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(average_grades.index, average_grades.values)
+
+    plt.title("Past Failures vs Student Performance")
+    plt.xlabel("Number of Past Failures")
+    plt.ylabel("Average Final Grade")
+    plt.savefig("results/failure_analysis.png")
+    plt.close()
+
+    print("Failure analysis graph saved successfully.")
+
+
+# DAY 38 - CORRELATION ANALYSIS
+
+def correlation_analysis():
+    columns = [
+        "studytime", "failures", "absences",
+        "Medu", "Fedu", "G1", "G2", "G3"
+    ]
+
+    correlation = data[columns].corr()
+
+    print("\nCORRELATION ANALYSIS")
+    print("--------------------")
+    print(correlation.round(2))
+
+    plt.figure(figsize=(9, 7))
+
+    plt.imshow(correlation, cmap="coolwarm", vmin=-1, vmax=1)
+
+    plt.colorbar(label="Correlation")
+    plt.xticks(range(len(columns)), columns, rotation=45)
+    plt.yticks(range(len(columns)), columns)
+
+    plt.title("Student Performance Correlation Matrix")
+    plt.tight_layout()
+
+    plt.savefig("results/correlation_analysis.png")
+    plt.close()
+
+    print("Correlation graph saved successfully.")
 
 # Main menu
 while True:
@@ -338,6 +411,9 @@ while True:
     print("5. Pass and Fail Analysis")
     print("6. Attendance Analysis")
     print("7. Study Time Analysis")
+    print("8. Parental Education Analysis")
+    print("9. Past Failures Analysis")
+    print("10. Correlation Analysis")
 
     choice = input("Choose an option: ")
 
@@ -358,6 +434,12 @@ while True:
 
     elif choice == "7":
             study_time_analysis()
-    
+    elif choice == "8":
+            parental_education_analysis()
+    elif choice == "9":
+            failure_analysis()
+
+    elif choice == "10":
+            correlation_analysis()
     else:
-        print("Invalid choice. Select from 1 to 7.")
+        print("Invalid choice. Select from 1 to 10.")
