@@ -508,6 +508,168 @@ END OF REPORT
     print("\nPROJECT SUMMARY REPORT")
     print(report)
     print("Report saved successfully.")
+    # DAY 42 - ACTUAL VS PREDICTED GRADE VISUALIZATION
+
+def actual_vs_predicted():
+    actual = y_test
+    predicted = rf_model.predict(X_test)
+
+    plt.figure(figsize=(8, 5))
+    plt.scatter(actual, predicted)
+
+    plt.plot([0, 20], [0, 20], linestyle="--")
+
+    plt.title("Actual vs Predicted Student Grades")
+    plt.xlabel("Actual Grades")
+    plt.ylabel("Predicted Grades")
+
+    plt.savefig("results/actual_vs_predicted.png")
+    plt.close()
+
+    print("\nActual vs Predicted graph saved successfully.")
+
+
+# DAY 43 - PREDICTION ERROR ANALYSIS
+
+def prediction_error_analysis():
+    actual = y_test
+    predicted = rf_model.predict(X_test)
+
+    errors = actual - predicted
+
+    print("\nPREDICTION ERROR ANALYSIS")
+    print("-------------------------")
+    print("Mean Absolute Error:", round(abs(errors).mean(), 2))
+    print("Maximum Error:", round(abs(errors).max(), 2))
+    print("Minimum Error:", round(abs(errors).min(), 2))
+
+    plt.figure(figsize=(8, 5))
+    plt.hist(errors, bins=15, edgecolor="black")
+
+    plt.title("Prediction Error Distribution")
+    plt.xlabel("Prediction Error")
+    plt.ylabel("Frequency")
+
+    plt.savefig("results/prediction_error.png")
+    plt.close()
+
+    print("Prediction error graph saved successfully.")
+
+
+# DAY 44 - DATASET INSIGHTS EXPORT
+
+def dataset_insights():
+    insights = pd.DataFrame({
+        "Metric": [
+            "Total Students",
+            "Average Study Time",
+            "Average Absences",
+            "Average First Grade",
+            "Average Second Grade",
+            "Average Final Grade",
+            "Highest Final Grade",
+            "Lowest Final Grade",
+            "Passed Students",
+            "Failed Students"
+        ],
+        "Value": [
+            len(data),
+            round(data["studytime"].mean(), 2),
+            round(data["absences"].mean(), 2),
+            round(data["G1"].mean(), 2),
+            round(data["G2"].mean(), 2),
+            round(data["G3"].mean(), 2),
+            data["G3"].max(),
+            data["G3"].min(),
+            len(data[data["G3"] >= 10]),
+            len(data[data["G3"] < 10])
+        ]
+    })
+
+    print("\nDATASET INSIGHTS")
+    print("----------------")
+    print(insights.to_string(index=False))
+
+    insights.to_csv(
+        "results/dataset_insights.csv",
+        index=False
+    )
+
+    print("Dataset insights exported successfully.")
+
+
+# DAY 45 - FINAL PROJECT COMPLETION REPORT
+
+def final_project_report():
+    accuracy_r2 = r2_score(
+        y_test,
+        rf_model.predict(X_test)
+    )
+
+    report = f"""
+STUDENT PERFORMANCE PREDICTION
+FINAL PROJECT REPORT
+========================================
+
+PROJECT OVERVIEW
+
+This project uses Machine Learning to predict
+student academic performance.
+
+DATASET DETAILS
+
+Total Students: {len(data)}
+Input Features: {len(features)}
+Target Variable: G3
+
+MACHINE LEARNING MODEL
+
+Algorithm: Random Forest Regressor
+R2 Score: {accuracy_r2:.3f}
+
+PERFORMANCE STATISTICS
+
+Average Final Grade: {data['G3'].mean():.2f}
+Highest Final Grade: {data['G3'].max()}
+Lowest Final Grade: {data['G3'].min()}
+
+Passed Students: {len(data[data['G3'] >= 10])}
+Failed Students: {len(data[data['G3'] < 10])}
+
+PROJECT FEATURES
+
+1. Student Grade Prediction
+2. Prediction History
+3. Model Evaluation
+4. Feature Importance
+5. Grade Distribution
+6. Student Statistics
+7. Pass and Fail Analysis
+8. Attendance Analysis
+9. Study Time Analysis
+10. Parental Education Analysis
+11. Failure Analysis
+12. Correlation Analysis
+13. Gender-wise Analysis
+14. Grade Category Analysis
+15. Prediction Error Analysis
+16. Dataset Insights
+
+OUTPUTS
+
+Results and visualizations are saved
+in the results folder.
+
+========================================
+PROJECT COMPLETED
+========================================
+"""
+
+    with open("results/final_project_report.txt", "w") as file:
+        file.write(report)
+
+    print(report)
+    print("Final project report saved successfully.")
 
 # Main menu
 while True:
@@ -525,6 +687,10 @@ while True:
     print("11. Gender-wise Performance Analysis")
     print("12. Grade Category Analysis")
     print("13. Generate Project Summary Report")
+    print("14. Actual vs Predicted Grade Graph")
+    print("15. Prediction Error Analysis")
+    print("16. Export Dataset Insights")
+    print("17. Generate Final Project Report")
 
     choice = input("Choose an option: ")
 
@@ -559,5 +725,16 @@ while True:
 
     elif choice == "13":
             generate_project_report()
+    elif choice == "14":
+            actual_vs_predicted()
+
+    elif choice == "15":
+            prediction_error_analysis()
+
+    elif choice == "16":
+            dataset_insights()
+
+    elif choice == "17":
+            final_project_report()
     else:
         print("Invalid choice. Select from 1 to 13.")
