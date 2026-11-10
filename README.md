@@ -91,23 +91,82 @@ The project will include:
 
 ## Internship Progress
 
-| Day | Work |
-|-----|------|
-| Day 1 | Project repository and README created |
-| Day 2 | Project setup and basic data analysis |
-| Day 3 | Dataset exploration |
-| ... | ... |
-| Day 45 | Final project and documentation |
+Days 01–15: Training and Learning
 
-## Day 2 Progress
-- Downloaded the Student Performance dataset from UCI.
-- Organized the dataset into the data folder.
-- Loaded Mathematics and Portuguese datasets using Python.
-- Checked dataset shape and missing values.
-- Performed basic statistical analysis.
-- Calculated average final grades.
-- Counted students with passing grades.
-## Author
+- Learned Python programming fundamentals.
+- Practiced Python syntax, variables, data types and operators.
+- Worked with conditional statements and loops.
+- Learned functions, lists, tuples, dictionaries and sets.
+- Practiced file handling and basic data operations.
+- Understood the fundamentals of data analysis and Machine Learning.
+
+Days 16–20: Project Introduction and Dataset Exploration
+
+- Selected Student Performance Prediction as the project.
+- Created the project repository on GitHub.
+- Collected and explored student performance datasets.
+- Studied dataset attributes and target variables.
+- Started understanding data preprocessing requirements.
+
+Days 21–25: Data Preprocessing and Analysis
+
+- Worked on organizing project files and folders.
+- Performed data cleaning and preprocessing.
+- Checked missing values and explored dataset characteristics.
+- Analyzed important features affecting student performance.
+- Practiced data analysis and visualization.
+
+Days 26–30: Model Development
+
+- Explored suitable Machine Learning algorithms.
+- Prepared input features and target variables.
+- Divided the dataset into training and testing sets.
+- Developed and trained prediction models.
+- Compared model performance.
+
+Days 31–35: Model Evaluation and Improvement
+
+- Evaluated trained models using suitable performance metrics.
+- Compared prediction results.
+- Worked on improving model performance.
+- Organized project code and documentation.
+- Updated project progress on GitHub.
+
+Days 36–40: Final Implementation
+
+- Reviewed the complete project workflow.
+- Improved code organization and readability.
+- Worked on prediction implementation.
+- Tested the model using sample inputs.
+- Updated project documentation.
+
+Days 41–45: Testing and Project Completion
+
+- Performed final project testing.
+- Reviewed model predictions and evaluation results.
+- Organized project files and datasets.
+- Updated README documentation.
+- Completed the internship project and maintained GitHub contributions.
+
+Project Workflow
+
+1. Dataset Collection
+2. Data Exploration
+3. Data Preprocessing
+4. Feature Selection
+5. Model Training
+6. Model Evaluation
+7. Performance Prediction
+
+Learning Outcomes
+
+- Improved Python programming skills.
+- Gained practical experience in data analysis.
+- Learned how to work with real-world datasets.
+- Understood the basic Machine Learning workflow.
+- Gained experience using Git and GitHub.
+- Improved project development and documentation skills.
+
 
 **Tanisha Gautam**
 
